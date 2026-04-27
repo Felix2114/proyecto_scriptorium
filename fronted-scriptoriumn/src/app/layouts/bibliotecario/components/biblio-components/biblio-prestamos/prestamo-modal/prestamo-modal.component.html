@@ -1,0 +1,43 @@
+<div class="modal-container">
+  <div class="modal-header">
+    <h2> SCRIPTORIUM</h2>
+    <button class="close-btn" (click)="cerrar()">X</button>
+  </div>
+
+  <p>
+    <strong>{{ data.libroTitulo }}</strong>
+  </p>
+  <p>
+    <strong>[{{ data.nombreMiembro }}]</strong>
+  </p>
+
+  <div *ngIf="data.tipo === 'devolver'">
+    <!-- Mostrar select solo si no hay estadoDevuelto -->
+    <div *ngIf="!data.prestamo.estadoDevuelto">
+      <label for="estadoLibro">ESTADO DEL LIBRO</label>
+      <select id="estadoLibro" [(ngModel)]="estadoLibro">
+        <option value="" disabled selected>Selecciona</option>
+        <option *ngFor="let estado of data.listaEstados" [value]="estado.value">
+          {{ estado.label }}
+        </option>
+      </select>
+    </div>
+
+    <!-- Mostrar monto de la multa si aplica -->
+    <div *ngIf="data.prestamo.multado && data.monto != null">
+      <small class="multa-info">
+         <strong>Multa pendiente:</strong>
+        {{ data.monto | currency : "USD" : "symbol" }}
+      </small>
+    </div>
+
+    <br />
+    <button class="modal-button" (click)="marcarDevuelto()">
+      Confirmar acción
+    </button>
+  </div>
+
+  <div *ngIf="data.tipo === 'ninguno'">
+    <p>Este préstamo ya fue devuelto y no requiere ninguna acción.</p>
+  </div>
+</div>

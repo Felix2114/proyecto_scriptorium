@@ -1,0 +1,64 @@
+<div class="agregar-libro-container">
+  <div class="encabezado">
+    <img  alt="Icono" class="icono">
+    <h2>Agregar nuevo Prestamo</h2>
+    <button mat-icon-button >
+    <mat-icon>close</mat-icon>
+  </button>
+  </div>
+
+  <form (ngSubmit)="guardarPrestamo(prestamo)" #form="ngForm" class="form-libro">
+    <div class="columna">
+      <mat-form-field appearance="fill">
+        <mat-label>Ficha</mat-label>
+        <input matInput name="ficha" [(ngModel)]="prestamo.ficha" required />
+      </mat-form-field>
+      
+
+      <mat-form-field appearance="fill">
+  <mat-label>ID Libro</mat-label>
+  <input matInput name="libroId" [(ngModel)]="prestamo.libroId" required [readonly]="true" />
+</mat-form-field>
+
+<mat-form-field appearance="fill">
+  <mat-label>Nombre del bibliotecario</mat-label>
+  <input matInput name="bibliotecario" [(ngModel)]="prestamo.bibliotecario" required readonly />
+</mat-form-field>
+
+
+<mat-form-field appearance="fill">
+  <mat-label>Fecha de inicio</mat-label>
+  <input matInput name="fechaInicio" [(ngModel)]="prestamo.fechaInicio" required [readonly]="true" type="date" />
+</mat-form-field>
+
+
+<mat-form-field appearance="fill">
+  <mat-label>Fecha de entrega</mat-label>
+  <input matInput type="date" name="fechaFin" [(ngModel)]="prestamo.fechaFin"  />
+</mat-form-field>
+
+
+
+
+      <mat-form-field appearance="fill">
+        <mat-label>Nombre de el usuario</mat-label>
+        <input matInput  name="usuario" [(ngModel)]="prestamo.usuario" required  />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+  <mat-label>Estado del libro</mat-label>
+  <mat-select name="estadoPrestamo" [(ngModel)]="prestamo.estadoPrestamo" required>
+    <mat-option *ngFor="let estado of estados" [value]="estado">
+      {{ estado }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+      <button mat-flat-button class="btn-agregar" type="submit">
+        Agregar prestamo
+      </button>
+    </div>
+
+    
+  </form>
+</div>

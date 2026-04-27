@@ -1,0 +1,60 @@
+name: CI/CD Deploy Angular Docker
+
+on: 
+  push:
+    branches: [ "master" ]
+
+jobs:
+  ci_cd_deploy_angular:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📁 Show initial files
+        run: ls -la
+
+      - name: ⬇️ Checkout repository
+        uses: actions/checkout@v2
+
+      - name: 📁 Show files after checkout
+        run: ls -la
+
+      - name: ⚙️ Use Node.js 20.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 20.x
+
+      - name: 📦 Install dependencies 
+        run: npm ci
+
+      - name: 🛠️ Build Angular app
+        run: npm run build --prod
+
+      - name: 📁 List Angular build output
+        run: ls -la dist/fronted-scriptoriumn/browser
+
+      - name: 🐳 Run base HTTPD container
+        run: docker run -d --name serving_base httpd
+
+      - name: 🐳 Docker ps (running containers)
+        run: docker ps
+
+      - name: 📦 Copy Angular build to container
+        run: docker cp dist/fronted-scriptoriumn/browser/. serving_base:/usr/local/apache2/htdocs
+
+      - name: 📁 List contents in container
+        run: docker exec serving_base ls -la /usr/local/apache2/htdocs
+
+      - name: 🏗️ Commit new Docker image
+        run: docker commit serving_base ${{ secrets.DOCKER_USER }}/frontend-scriptoriumn:${{ github.sha }}
+
+      - name: 🧱 List Docker images
+        run: docker images
+
+      - name: 🔐 Docker login
+        env:
+          DOCKER_USER: ${{ secrets.DOCKER_USER }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        run: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+
+      - name: 🚀 Push Docker image
+        run: docker push ${{ secrets.DOCKER_USER }}/frontend-scriptoriumn:${{ github.sha }}

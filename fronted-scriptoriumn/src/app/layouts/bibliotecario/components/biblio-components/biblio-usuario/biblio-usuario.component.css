@@ -1,0 +1,34 @@
+.bienvenida-card {
+  background: linear-gradient(135deg, #bbfcfc, #008df8);
+  padding: 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  color: #333;
+  max-width: 400px;
+  margin: 2rem auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: transform 0.3s ease;
+  animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.bienvenida-card:hover {
+  transform: scale(1.03);
+}
+
+.bienvenida-card h2 {
+  margin-bottom: 0.5rem;
+  font-size: 1.8rem;
+}
+
+.bienvenida-card p {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+

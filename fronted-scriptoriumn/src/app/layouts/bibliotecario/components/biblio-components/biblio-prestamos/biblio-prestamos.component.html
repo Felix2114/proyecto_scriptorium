@@ -1,0 +1,243 @@
+<div class="container" style="padding: 20px">
+  <h2>Prestamos</h2>
+
+  <div class="barra-busqueda">
+    <input type="text" placeholder="Buscar Prestamo por el nombre del usuario" [(ngModel)]="filtroBusqueda" />
+
+    <button mat-stroked-button color="primary" (click)="filtrarUsuarios()">
+      Buscar</button>
+
+  </div>
+
+  <table mat-table [dataSource]="prestamo" class="mat-elevation-z8" style="width: 100%; margin-top: 20px">
+    <ng-container matColumnDef="idPrestamo">
+      <th mat-header-cell *matHeaderCellDef>ID Prestamo</th>
+      <td mat-cell *matCellDef="let prestamo">
+        <ng-container *ngIf="!prestamo.editando else editPrestamo">
+          {{ prestamo.idPrestamo }}
+        </ng-container>
+        <ng-template #editPrestamo>
+          <mat-form-field appearance="fill" class="campo-input">
+            <input matInput [(ngModel)]="prestamo.idPrestamo" [name]="'idPrestamo-' + prestamo.idPrestamo"
+              (click)="$event.stopPropagation()" />
+          </mat-form-field>
+        </ng-template>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="ficha">
+      <th mat-header-cell *matHeaderCellDef>Ficha</th>
+      <td mat-cell *matCellDef="let prestamo">
+        <ng-container *ngIf="!prestamo.editando else editFicha">
+          {{ prestamo.ficha }}
+        </ng-container>
+        <ng-template #editFicha>
+          <mat-form-field appearance="fill" class="campo-input">
+            <input matInput [(ngModel)]="prestamo.ficha" [name]="'ficha-' + prestamo.idPrestamo"
+              (click)="$event.stopPropagation()" />
+          </mat-form-field>
+        </ng-template>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="usuarioId">
+      <th mat-header-cell *matHeaderCellDef>ID usuario</th>
+      <td mat-cell *matCellDef="let prestamo">
+        <ng-container *ngIf="!prestamo.editando else editUsuarioId">
+          {{ prestamo.usuarioId }}
+        </ng-container>
+        <ng-template #editUsuarioId>
+          <mat-form-field appearance="fill" class="campo-input">
+            <input matInput [(ngModel)]="prestamo.usuarioId" [name]="'usuarioId-' + prestamo.idPrestamo"
+              (click)="$event.stopPropagation()" />
+          </mat-form-field>
+        </ng-template>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="libroId">
+      <th mat-header-cell *matHeaderCellDef>ID libro</th>
+      <td mat-cell *matCellDef="let prestamo">
+        <ng-container *ngIf="!prestamo.editando else editLibroid">
+          {{ prestamo.libroId }}
+        </ng-container>
+        <ng-template #editLibroid>
+          <mat-form-field appearance="fill" class="campo-input">
+            <input matInput [(ngModel)]="prestamo.libroId" [name]="'libroId-' + prestamo.idPrestamo"
+              (click)="$event.stopPropagation()" />
+          </mat-form-field>
+        </ng-template>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="bibliotecarioId">
+      <th mat-header-cell *matHeaderCellDef>ID bibliotecario</th>
+      <td mat-cell *matCellDef="let prestamo">
+        <ng-container *ngIf="!prestamo.editando else editBibliotecarioid">
+          {{ prestamo.bibliotecarioId }}
+        </ng-container>
+        <ng-template #editBibliotecarioid>
+          <mat-form-field appearance="fill" class="campo-input">
+            <input matInput [(ngModel)]="prestamo.bibliotecarioId" [name]="'bibliotecarioId-' + prestamo.idPrestamo"
+              (click)="$event.stopPropagation()" />
+          </mat-form-field>
+        </ng-template>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="activo">
+      <th mat-header-cell *matHeaderCellDef>Activo</th>
+      <td mat-cell *matCellDef="let prestamo">
+        <ng-container *ngIf="!prestamo.editando else editActivo">
+          {{ prestamo.activo }}
+        </ng-container>
+        <ng-template #editActivo>
+          <mat-form-field appearance="fill" class="campo-input">
+            <input matInput [(ngModel)]="prestamo.activo" [name]="'activo-' + prestamo.idPrestamo"
+              (click)="$event.stopPropagation()" />
+          </mat-form-field>
+        </ng-template>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="multado">
+      <th mat-header-cell *matHeaderCellDef>Multado</th>
+      <td mat-cell *matCellDef="let prestamo">
+        <ng-container *ngIf="!prestamo.editando else editMultado">
+          {{ prestamo.multado }}
+        </ng-container>
+        <ng-template #editMultado>
+          <mat-form-field appearance="fill" class="campo-input">
+            <input matInput [(ngModel)]="prestamo.multado" [name]="'multado-' + prestamo.idPrestamo"
+              (click)="$event.stopPropagation()" />
+          </mat-form-field>
+        </ng-template>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="devuelto">
+      <th mat-header-cell *matHeaderCellDef>Devuelto</th>
+      <td mat-cell *matCellDef="let prestamo">
+        <ng-container *ngIf="!prestamo.editando else editDevuelto">
+          {{ prestamo.devuelto }}
+        </ng-container>
+        <ng-template #editDevuelto>
+          <mat-form-field appearance="fill" class="campo-input">
+            <input matInput [(ngModel)]="prestamo.devuelto" [name]="'devuelto-' + prestamo.idPrestamo"
+              (click)="$event.stopPropagation()" />
+          </mat-form-field>
+        </ng-template>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="estadoPrestamo">
+      <th mat-header-cell *matHeaderCellDef>Estado Prestamo</th>
+      <td mat-cell *matCellDef="let prestamo">
+        <ng-container *ngIf="!prestamo.editando else editEstadoPrestamo">
+          {{ prestamo.estadoPrestamo }}
+        </ng-container>
+        <ng-template #editEstadoPrestamo>
+          <mat-form-field appearance="fill" class="campo-input">
+            <input matInput [(ngModel)]="prestamo.estadoPrestamo" [name]="'estadoPrestamo-' + prestamo.idPrestamo"
+              (click)="$event.stopPropagation()" />
+          </mat-form-field>
+        </ng-template>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="estadoDevuelto">
+      <th mat-header-cell *matHeaderCellDef>Estado Devuelto</th>
+      <td mat-cell *matCellDef="let prestamo">
+        <ng-container *ngIf="!prestamo.editando else editEstadoDevuelto">
+          {{ prestamo.estadoDevuelto }}
+        </ng-container>
+        <ng-template #editEstadoDevuelto>
+          <mat-form-field appearance="fill" class="campo-input">
+            <input matInput [(ngModel)]="prestamo.estadoDevuelto" [name]="'estadoDevuelto-' + prestamo.idPrestamo"
+              (click)="$event.stopPropagation()" />
+          </mat-form-field>
+        </ng-template>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="fechaInicio">
+      <th mat-header-cell *matHeaderCellDef>Fecha Inicio</th>
+      <td mat-cell *matCellDef="let prestamo">
+        <ng-container *ngIf="!prestamo.editando else editFechaInicio">
+          {{ prestamo.fechaInicio }}
+        </ng-container>
+        <ng-template #editFechaInicio>
+          <mat-form-field appearance="fill" class="campo-input">
+            <input matInput [(ngModel)]="prestamo.fechaInicio" [name]="'fechaInicio-' + prestamo.idPrestamo"
+              (click)="$event.stopPropagation()" />
+          </mat-form-field>
+        </ng-template>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="fechaFin">
+      <th mat-header-cell *matHeaderCellDef>Fecha Fin</th>
+      <td mat-cell *matCellDef="let prestamo">
+        <ng-container *ngIf="!prestamo.editando else editFechaFin">
+          {{ prestamo.fechaFin }}
+        </ng-container>
+        <ng-template #editFechaFin>
+          <mat-form-field appearance="fill" class="campo-input">
+            <input matInput [(ngModel)]="prestamo.fechaFin" [name]="'fechaFin-' + prestamo.idPrestamo"
+              (click)="$event.stopPropagation()" />
+          </mat-form-field>
+        </ng-template>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="acciones">
+      <th mat-header-cell *matHeaderCellDef>Acciones</th>
+      <td mat-cell *matCellDef="let prestamo">
+        <button mat-icon-button color="accent" *ngIf="prestamo.editando"
+          (click)="guardarPrestamo(prestamo); $event.stopPropagation()">
+          <mat-icon>save</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="eliminarPrestamo(prestamo.idPrestamo); $event.stopPropagation()">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef=" [
+          'idPrestamo',
+          'ficha',
+          'usuarioId',
+          'libroId',
+          'bibliotecarioId',
+          'activo',
+          'multado',
+          'devuelto',
+          'estadoPrestamo',
+          'estadoDevuelto',
+          'fechaInicio',
+          'fechaFin',
+          'acciones'
+        ]
+      "></tr>
+
+
+    <tr mat-row *matRowDef="let row;  let i = index;
+        columns: [
+          'idPrestamo',
+          'ficha',
+          'usuarioId',
+          'libroId',
+          'bibliotecarioId',
+          'activo',
+          'multado',
+          'devuelto',
+          'estadoPrestamo',
+          'estadoDevuelto',
+          'fechaInicio',
+          'fechaFin',
+          'acciones'
+        ]" [ngClass]="getRowClass(i)" (click)="abrirDetallePrestamo(row)"></tr>
+
+  </table>
+</div>

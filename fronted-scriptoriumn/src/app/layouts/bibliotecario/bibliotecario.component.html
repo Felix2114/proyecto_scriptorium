@@ -1,0 +1,17 @@
+<mat-toolbar class="nav-personalizada mat-elevation-z4" style="justify-content: space-between; padding: 0 16px;">
+  <a mat-button routerLink="./usuario" class="fw-bold" style="font-size: 1.25rem; color: white;">
+   {{ labels.saludo(usuarioLogueado) }}
+
+  </a>
+
+  <nav>
+    <ul class="d-flex" style="display: flex; list-style: none; gap: 16px; margin: 0; padding: 0;">
+      <li><a mat-button routerLink="./bibliotecarios" style="color: white;">{{ labels.bibliotecarios }}</a></li>
+      <li><a mat-button routerLink="./libros" style="color: white;">{{ labels.libros }}</a></li>
+      <li><a mat-button routerLink="./prestamos" style="color: white;">{{ labels.prestamos }}</a></li>
+      <li><a mat-button routerLink="./miembros" style="color: white;">{{ labels.miembros }}</a></li>
+    </ul>
+  </nav>
+</mat-toolbar>
+
+<router-outlet></router-outlet>

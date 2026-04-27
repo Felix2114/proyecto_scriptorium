@@ -1,0 +1,90 @@
+.modal-container {
+  width: 380px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+  padding: 20px;
+  color: #333;
+  font-family: 'Segoe UI', sans-serif;
+  position: relative;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #b2f0ff;
+  padding: 10px 16px;
+  border-radius: 8px 8px 0 0;
+}
+
+.modal-header h2 {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+  color: #000;
+}
+
+.modal-header .close-btn {
+  background: none;
+  border: none;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #000;
+}
+
+.modal-header .close-btn:hover {
+  color: red;
+}
+
+.modal-container p {
+  margin: 10px 0 5px;
+  font-size: 15px;
+}
+
+.modal-container strong {
+  font-weight: bold;
+}
+
+label {
+  display: block;
+  margin: 12px 0 6px;
+  font-size: 14px;
+  color: #444;
+}
+
+select {
+  width: 100%;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.multa-info {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #d9534f;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.modal-button {
+  margin-top: 16px;
+  background-color: #a0e9ff;
+  color: #000;
+  border: none;
+  border-radius: 20px;
+  padding: 10px;
+  width: 100%;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.modal-button:hover {
+  background-color: #70dbff;
+}

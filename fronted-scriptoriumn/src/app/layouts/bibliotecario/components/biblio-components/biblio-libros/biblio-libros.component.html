@@ -1,0 +1,174 @@
+<div class="container-libros">
+  <h2>Gestión de Libros</h2>
+
+  <div class="barra-busqueda">
+    <input
+      type="text"
+      placeholder="Buscar libro..."
+      [(ngModel)]="filtroBusqueda"
+    />
+
+    <button mat-stroked-button color="primary" (click)="filtrarLibros()">
+      Buscar
+    </button>
+
+    <button mat-stroked-button color="primary" (click)="abrirAgregarLibro()">
+      Añadir libro +
+    </button>
+  </div>
+
+  <table mat-table [dataSource]="libros" class="mat-elevation-z8 tabla-libros">
+    <!-- Título -->
+    <ng-container matColumnDef="titulo">
+      <th mat-header-cell *matHeaderCellDef>Título</th>
+      <td mat-cell *matCellDef="let libro">
+        <ng-container *ngIf="!libro.editando; else editTitulo">
+          {{ libro.titulo }}
+        </ng-container>
+        <ng-template #editTitulo>
+          <mat-form-field appearance="fill" class="campo-input">
+            <input
+              matInput
+              [(ngModel)]="libro.titulo"
+              [name]="'titulo-' + libro.idLibro"
+              (click)="$event.stopPropagation()"
+            />
+          </mat-form-field>
+        </ng-template>
+      </td>
+    </ng-container>
+
+    <!-- Autor -->
+    <ng-container matColumnDef="autor">
+      <th mat-header-cell *matHeaderCellDef>Autor</th>
+      <td mat-cell *matCellDef="let libro">
+        <ng-container *ngIf="!libro.editando; else editAutor">
+          {{ libro.autor }}
+        </ng-container>
+        <ng-template #editAutor>
+          <mat-form-field appearance="fill" class="campo-input">
+            <input
+              matInput
+              [(ngModel)]="libro.autor"
+              [name]="'autor-' + libro.idLibro"
+              (click)="$event.stopPropagation()"
+            />
+          </mat-form-field>
+        </ng-template>
+      </td>
+    </ng-container>
+
+    <!-- ISBN -->
+    <ng-container matColumnDef="isbn">
+      <th mat-header-cell *matHeaderCellDef>ISBN</th>
+      <td mat-cell *matCellDef="let libro">
+        <ng-container *ngIf="!libro.editando; else editIsbn">
+          {{ libro.isbn }}
+        </ng-container>
+        <ng-template #editIsbn>
+          <mat-form-field appearance="fill" class="campo-input">
+            <input
+              matInput
+              [(ngModel)]="libro.isbn"
+              [name]="'isbn-' + libro.idLibro"
+              (click)="$event.stopPropagation()"
+            />
+          </mat-form-field>
+        </ng-template>
+      </td>
+    </ng-container>
+
+    <!-- Precio -->
+    <ng-container matColumnDef="precio">
+      <th mat-header-cell *matHeaderCellDef>Precio</th>
+      <td mat-cell *matCellDef="let libro">
+        <ng-container *ngIf="!libro.editando; else editPrecio">
+          {{ libro.precio }}
+        </ng-container>
+        <ng-template #editPrecio>
+          <mat-form-field appearance="fill" class="campo-input">
+            <input
+              matInput
+              [(ngModel)]="libro.precio"
+              [name]="'precio-' + libro.idLibro"
+              (click)="$event.stopPropagation()"
+            />
+          </mat-form-field>
+        </ng-template>
+      </td>
+    </ng-container>
+
+    <!-- Género -->
+    <ng-container matColumnDef="generoId">
+      <th mat-header-cell *matHeaderCellDef>ID Género</th>
+      <td mat-cell *matCellDef="let libro">
+        <ng-container *ngIf="!libro.editando; else editGenero">
+          {{ libro.generoId }}
+        </ng-container>
+        <ng-template #editGenero>
+          <mat-form-field appearance="fill" class="campo-input">
+            <input
+              matInput
+              [(ngModel)]="libro.generoId"
+              [name]="'generoId-' + libro.idLibro"
+              (click)="$event.stopPropagation()"
+            />
+          </mat-form-field>
+        </ng-template>
+      </td>
+    </ng-container>
+
+    <!-- Acciones -->
+    <ng-container matColumnDef="acciones">
+      <th mat-header-cell *matHeaderCellDef>Acciones</th>
+      <td mat-cell *matCellDef="let libro">
+        <button
+          mat-icon-button
+          color="primary"
+          *ngIf="!libro.editando"
+          (click)="editarLibro(libro); $event.stopPropagation()"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          color="accent"
+          *ngIf="libro.editando"
+          (click)="guardarLibro(libro); $event.stopPropagation()"
+        >
+          <mat-icon>save</mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          color="warn"
+          (click)="eliminarLibro(libro.idLibro); $event.stopPropagation()"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <!-- Filas -->
+    <tr
+      mat-header-row
+      *matHeaderRowDef="[
+        'titulo',
+        'autor',
+        'isbn',
+        'precio',
+        'generoId',
+        'acciones'
+      ]"
+    ></tr>
+    <tr
+      mat-row
+      *matRowDef="
+        let row;
+        let i = index;
+        columns: ['titulo', 'autor', 'isbn', 'precio', 'generoId', 'acciones']
+      "
+      [ngClass]="getRowClass(i)"
+      (click)="abrirDetalleLibro(row)"
+    ></tr>
+  </table>
+</div>

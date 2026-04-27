@@ -1,0 +1,32 @@
+.login-card {
+  background-color: #e2eaee; 
+  color: #1e1b1b;             
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  margin: 2rem auto;
+  margin-top: 150px;
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+button {
+  width: 100%;
+  font-weight: bold;
+}
+
+.registro-link {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.registro-link a {
+  color: #007bff;
+  text-decoration: underline;
+  cursor: pointer;
+}

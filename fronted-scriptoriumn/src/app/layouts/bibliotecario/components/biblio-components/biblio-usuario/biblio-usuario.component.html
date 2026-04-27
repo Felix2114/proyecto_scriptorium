@@ -1,0 +1,5 @@
+<div *ngIf="usuarioLogueado" class="bienvenida-card">
+  <h2> ¡Hola, {{ usuarioLogueado }}!</h2>
+  <p> Hoy es <strong>{{ fechaActual | date:'fullDate' }}</strong></p>
+</div>
+

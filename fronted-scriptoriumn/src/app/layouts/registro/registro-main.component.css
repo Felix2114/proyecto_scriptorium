@@ -1,0 +1,14 @@
+.login-card {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50vw; /* Puedes ajustar esto a 40vw, 30vw, etc. */
+  height: 100vh;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  border-radius: 0;
+  background-color: rgb(102, 226, 248);
+}
+.full-width {
+  width: 100%;
+  margin-bottom: 16px;
+}

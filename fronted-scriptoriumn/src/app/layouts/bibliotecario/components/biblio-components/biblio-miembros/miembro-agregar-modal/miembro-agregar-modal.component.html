@@ -1,0 +1,41 @@
+<div class="agregar-libro-container">
+  <div class="encabezado">
+    <img  alt="Icono" class="icono">
+    <h2>Agregar nuevo miembro</h2>
+    <button mat-icon-button (click)="cerrar()">
+    <mat-icon>close</mat-icon>
+  </button>
+  </div>
+
+  <form (ngSubmit)="guardarUsuario(miembro)" #form="ngForm" class="form-libro">
+    <div class="columna">
+      <mat-form-field appearance="fill">
+        <mat-label>Nombre</mat-label>
+        <input matInput name="nombre" [(ngModel)]="miembro.nombre" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Fecha de Nacimiento</mat-label>
+        <input matInput type="date" name="fechaNacimiento" [(ngModel)]="miembro.fechaNacimiento" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>direccion</mat-label>
+        <input matInput  name="direccion" [(ngModel)]="miembro.direccion" required />
+      </mat-form-field>
+    </div>
+
+    <div class="columna">
+      <mat-form-field appearance="fill">
+        <mat-label>Contacto</mat-label>
+        <input matInput name="contacto" [(ngModel)]="miembro.contacto" required />
+      </mat-form-field>
+
+   
+
+      <button mat-flat-button class="btn-agregar" type="submit">
+        Agregar Miembro
+      </button>
+    </div>
+  </form>
+</div>

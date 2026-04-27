@@ -1,0 +1,54 @@
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #b2f0ff;
+  padding: 10px 16px;
+  border-radius: 8px 8px 0 0;
+}
+
+.modal-header h2 {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+  color: #000;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.modal-header .icono {
+  width: 24px;
+  height: 24px;
+}
+
+.modal-body {
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 0 0 8px 8px;
+  color: #000;
+}
+
+.modal-body h3 {
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.modal-body p {
+  margin: 8px 0;
+  font-size: 16px;
+}
+
+.btn-prestamo {
+  margin-top: 20px;
+  background-color: #a0e9ff;
+  color: #000;
+  border-radius: 20px;
+  padding: 8px 16px;
+  text-transform: none;
+}
+
+.btn-prestamo:hover {
+  background-color: #70dbff;
+}

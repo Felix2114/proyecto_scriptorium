@@ -1,0 +1,158 @@
+<div class="container" style="padding: 20px;">
+    <h2>Miembros</h2>
+
+    <div class="barra-busqueda">
+  <input type="text" placeholder="Buscar Miembro..." [(ngModel)]="filtroBusqueda"/>
+
+  <button mat-stroked-button color="primary" (click)="filtrarUsuarios()">
+    Buscar
+  </button>
+
+  <button mat-stroked-button color="primary" (click)="abrirAgregarUsuario()" >
+    Añadir miembro +
+  </button>
+</div>
+
+
+    <table mat-table [dataSource]="miembros" class="mat-elevation-z8" style="width: 100%; margin-top: 20px;">
+
+        <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> ID Usuario </th>
+      <td mat-cell *matCellDef="let miembros">
+        <ng-container *ngIf="!miembros.editando; else editUsuario">
+          {{ miembros.id }}
+        </ng-container>
+         <ng-template #editUsuario>
+          <mat-form-field appearance="fill" style="width: 100%">
+            <input
+              matInput
+              [(ngModel)]="miembros.id"
+              name="id-{{ miembros.id }}"
+            />
+          </mat-form-field>
+        </ng-template>
+      </td>
+    </ng-container>
+
+     <ng-container matColumnDef="nombre">
+      <th mat-header-cell *matHeaderCellDef> Nombre </th>
+      <td mat-cell *matCellDef="let miembros">
+        <ng-container *ngIf="!miembros.editando; else editUsuario">
+          {{ miembros.nombre }}
+        </ng-container>
+        <ng-template #editUsuario>
+          <mat-form-field appearance="fill" style="width: 100%">
+            <input
+              matInput
+              [(ngModel)]="miembros.nombre"
+              name="nombre-{{ miembros.id }}"
+            />
+          </mat-form-field>
+        </ng-template>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="fechaNacimiento">
+      <th mat-header-cell *matHeaderCellDef> Fecha Nacimiento </th>
+      <td mat-cell *matCellDef="let miembros">
+        <ng-container *ngIf="!miembros.editando; else editUsuario">
+          {{ miembros.fechaNacimiento }}
+        </ng-container>
+        <ng-template #editUsuario>
+          <mat-form-field appearance="fill" style="width: 100%">
+            <input
+              matInput
+              [(ngModel)]="miembros.fechaNacimiento"
+              name="fechaNacimiento-{{ miembros.id }}"
+            />
+          </mat-form-field>
+        </ng-template>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="direccion">
+      <th mat-header-cell *matHeaderCellDef> Direccion </th>
+      <td mat-cell *matCellDef="let miembros">
+        <ng-container *ngIf="!miembros.editando; else editUsuario">
+          {{ miembros.direccion }}
+        </ng-container>
+        <ng-template #editUsuario>
+          <mat-form-field appearance="fill" style="width: 100%">
+            <input
+              matInput
+              [(ngModel)]="miembros.direccion"
+              name="direccion-{{ miembros.id }}"
+            />
+          </mat-form-field>
+        </ng-template>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="contacto">
+      <th mat-header-cell *matHeaderCellDef> Contacto </th>
+      <td mat-cell *matCellDef="let miembros">
+        <ng-container *ngIf="!miembros.editando; else editUsuario">
+          {{ miembros.contacto }}
+        </ng-container>
+         <ng-template #editUsuario>
+          <mat-form-field appearance="fill" style="width: 100%">
+            <input
+              matInput
+              [(ngModel)]="miembros.contacto"
+              name="contacto-{{ miembros.id }}"
+            />
+          </mat-form-field>
+        </ng-template>
+      </td>
+    </ng-container>
+
+   
+
+    <ng-container matColumnDef="acciones">
+      <th mat-header-cell *matHeaderCellDef>Acciones</th>
+      <td mat-cell *matCellDef="let miembros">
+        <button
+          mat-icon-button
+          color="primary"
+          *ngIf="!miembros.editando"
+          (click)="editarUsuario(miembros)"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          color="accent"
+          *ngIf="miembros.editando"
+          (click)="guardarUsuario(miembros)"
+        >
+          <mat-icon>save</mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          color="warn"
+          (click)="eliminarUsuario(miembros.id)"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="['id',
+                                          'nombre',
+                                          'fechaNacimiento',
+                                          'direccion',
+                                          'contacto',
+                                          'acciones']"></tr>
+    <tr mat-row
+     *matRowDef="let row;  let i = index; columns: ['id',
+                                               'nombre',
+                                               'fechaNacimiento',
+                                               'direccion',
+                                               'contacto',                                            
+                                               'acciones']"
+                                               [ngClass]="getRowClass(i)"
+                                               ></tr>
+
+    </table>
+</div>
+

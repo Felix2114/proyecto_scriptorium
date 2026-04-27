@@ -1,0 +1,50 @@
+<div class="agregar-libro-container">
+  <div class="encabezado">
+    <img  alt="Icono" class="icono">
+    <h2>Agregar nuevo libro</h2>
+    <button mat-icon-button (click)="cerrar()">
+    <mat-icon>close</mat-icon>
+  </button>
+  </div>
+
+  <form (ngSubmit)="guardarLibro(libro)" #form="ngForm" class="form-libro">
+    <div class="columna">
+      <mat-form-field appearance="fill">
+        <mat-label>Nombre</mat-label>
+        <input matInput name="titulo" [(ngModel)]="libro.titulo" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Autor</mat-label>
+        <input matInput name="autor" [(ngModel)]="libro.autor" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Género</mat-label>
+        <input matInput type="number" name="generoId" [(ngModel)]="libro.generoId" required />
+      </mat-form-field>
+    </div>
+
+    <div class="columna">
+      <mat-form-field appearance="fill">
+        <mat-label>ISBN</mat-label>
+        <input matInput name="isbn" [(ngModel)]="libro.isbn" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Precio</mat-label>
+        <input matInput type="number" name="precio" [(ngModel)]="libro.precio" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Stock</mat-label>
+        <input matInput type="number" name="stock" [(ngModel)]="libro.stock" required />
+      </mat-form-field>
+
+
+      <button mat-flat-button class="btn-agregar" type="submit">
+        Agregar libro
+      </button>
+    </div>
+  </form>
+</div>
