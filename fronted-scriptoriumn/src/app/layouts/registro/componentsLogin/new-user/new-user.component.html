@@ -1,25 +1,25 @@
-<mat-card class="login-card">
+<mat-card class="login-card" data-cy="form-registro">
   <mat-card-subtitle>Crear cuenta</mat-card-subtitle>
 
   <form [formGroup]="registroForm" (ngSubmit)="registrarBibliotecario()" class="login-form">
 
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>Usuario</mat-label>
-      <input matInput formControlName="usuario" />
+      <input matInput formControlName="usuario" data-cy="input-usuario-registro" />
     </mat-form-field>
 
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>Contraseña</mat-label>
-      <input matInput type="password" formControlName="contraseña" />
+      <input matInput type="password" formControlName="contraseña" data-cy="input-contrasena-registro" />
     </mat-form-field>
 
-    <button mat-raised-button color="primary" class="full-width" [disabled]="registroForm.invalid">
+    <button mat-raised-button color="primary" class="full-width" [disabled]="registroForm.invalid" data-cy="btn-registrarse">
       Registrarse
     </button>
 
     <div class="registro-link">
       ¿Ya tienes cuenta?
-      <a routerLink="/registro/login">Inicia sesión aquí</a>
+      <a routerLink="/registro/login" data-cy="link-login">Inicia sesión aquí</a>
     </div>
   </form>
 </mat-card>

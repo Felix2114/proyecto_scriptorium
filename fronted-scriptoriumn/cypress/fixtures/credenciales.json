@@ -1,0 +1,14 @@
+{
+  "validas": {
+    "usuario": "andryk",
+    "contrasena": "12345678"
+  },
+  "invalidas": {
+    "usuario": "andryk",
+    "contrasena": "MalaClave"
+  },
+  "registro": {
+    "usuario": "bibliotecario_test",
+    "contrasena": "Test1234"
+  }
+}

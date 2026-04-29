@@ -1,23 +1,23 @@
-<mat-card class="login-card">
+<mat-card class="login-card" data-cy="login-form">
   <mat-card-title>Iniciar Sesión</mat-card-title>
 
   <form [formGroup]="loginForm" (ngSubmit)="iniciarSesion()">
     <mat-form-field appearance="fill">
       <mat-label>Usuario</mat-label>
-      <input matInput formControlName="usuario" required>
+      <input matInput formControlName="usuario" required data-cy="input-usuario">
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>Contraseña</mat-label>
-      <input matInput type="password" formControlName="contraseña" required>
+      <input matInput type="password" formControlName="contraseña" required data-cy="input-contrasena">
     </mat-form-field>
 
-    <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">
+    <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid" data-cy="btn-login">
       Entrar
     </button>
 
     <div class="registro-link">
-      ¿No tienes cuenta? <a routerLink="/registro/register">Regístrate aquí</a>
+      ¿No tienes cuenta? <a routerLink="/registro/register" data-cy="link-registro">Regístrate aquí</a>
     </div>
   </form>
 </mat-card>
