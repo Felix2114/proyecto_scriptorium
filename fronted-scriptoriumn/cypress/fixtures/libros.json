@@ -1,0 +1,10 @@
+{
+  "nuevo": {
+    "titulo": "Cypress Test Book",
+    "autor": "QA Author",
+    "isbn": "978-0000000001",
+    "precio": 250,
+    "generoId": 1,
+    "stock": 5
+  }
+}

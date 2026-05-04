@@ -2,40 +2,34 @@
   <div class="encabezado">
     <img  alt="Icono" class="icono">
     <h2>Agregar nuevo miembro</h2>
-    <button mat-icon-button (click)="cerrar()">
+    <button mat-icon-button type="button" (click)="cerrar()">
     <mat-icon>close</mat-icon>
   </button>
   </div>
 
-  <form (ngSubmit)="guardarUsuario(miembro)" #form="ngForm" class="form-libro">
-    <div class="columna">
-      <mat-form-field appearance="fill">
-        <mat-label>Nombre</mat-label>
-        <input matInput name="nombre" [(ngModel)]="miembro.nombre" required />
-      </mat-form-field>
+  <form (ngSubmit)="guardarUsuario(miembro)" #form="ngForm" class="form-libro" data-cy="form-agregar-miembro">
+    <mat-form-field appearance="fill">
+      <mat-label>Nombre</mat-label>
+      <input matInput name="nombre" [(ngModel)]="miembro.nombre" required maxlength="50" data-cy="input-miembro-nombre" />
+    </mat-form-field>
 
-      <mat-form-field appearance="fill">
-        <mat-label>Fecha de Nacimiento</mat-label>
-        <input matInput type="date" name="fechaNacimiento" [(ngModel)]="miembro.fechaNacimiento" required />
-      </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Fecha de Nacimiento</mat-label>
+      <input matInput type="text" name="fechaNacimiento" [(ngModel)]="miembro.fechaNacimiento" required placeholder="YYYY-MM-DD" data-cy="input-miembro-fecha" />
+    </mat-form-field>
 
-      <mat-form-field appearance="fill">
-        <mat-label>direccion</mat-label>
-        <input matInput  name="direccion" [(ngModel)]="miembro.direccion" required />
-      </mat-form-field>
-    </div>
+    <mat-form-field appearance="fill">
+      <mat-label>Dirección</mat-label>
+      <input matInput name="direccion" [(ngModel)]="miembro.direccion" required data-cy="input-miembro-direccion" />
+    </mat-form-field>
 
-    <div class="columna">
-      <mat-form-field appearance="fill">
-        <mat-label>Contacto</mat-label>
-        <input matInput name="contacto" [(ngModel)]="miembro.contacto" required />
-      </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Contacto</mat-label>
+      <input matInput name="contacto" [(ngModel)]="miembro.contacto" required data-cy="input-miembro-contacto" />
+    </mat-form-field>
 
-   
-
-      <button mat-flat-button class="btn-agregar" type="submit">
-        Agregar Miembro
-      </button>
-    </div>
+    <button mat-flat-button class="btn-agregar" type="submit" data-cy="btn-guardar-miembro">
+      Agregar Miembro
+    </button>
   </form>
 </div>

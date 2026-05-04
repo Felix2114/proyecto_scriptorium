@@ -13,6 +13,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @Component({
   selector: 'biblio-libros',
@@ -27,7 +28,8 @@ import { MatButtonModule } from '@angular/material/button';
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDialogModule
   ]
 })
 export class BiblioLibrosComponent implements OnInit {
@@ -43,8 +45,16 @@ export class BiblioLibrosComponent implements OnInit {
 
   ngOnInit(): void {
     this.libroService.getLibros().subscribe(data => {
-      this.libros = data.map((l: any) => ({ ...l, editando: false }));
+      this.libros = this.normalizarLibros(data);
     });
+  }
+
+  private normalizarLibros(data: any): any[] {
+    if (!Array.isArray(data)) {
+      return [];
+    }
+
+    return data.map((l: any) => ({ ...l, editando: false }));
   }
 
   editarLibro(libro: any): void {
@@ -98,17 +108,20 @@ export class BiblioLibrosComponent implements OnInit {
 
   filtrarLibros(): void {
     const palabra = this.filtroBusqueda.trim();
+    const termino = palabra.toLowerCase();
 
     if (palabra === '') {
       this.libroService.getLibros().subscribe(data => {
-        this.libros = data.map((l: any) => ({ ...l, editando: false }));
+        this.libros = this.normalizarLibros(data);
       });
       return;
     }
 
     this.libroService.buscarLibros(palabra).subscribe(
       (resultados) => {
-        this.libros = resultados.map((l: any) => ({ ...l, editando: false }));
+        this.libros = this.normalizarLibros(resultados).filter((libro) =>
+          String(libro?.titulo ?? '').toLowerCase().includes(termino)
+        );
       },
       (error) => {
         this.libros = [];

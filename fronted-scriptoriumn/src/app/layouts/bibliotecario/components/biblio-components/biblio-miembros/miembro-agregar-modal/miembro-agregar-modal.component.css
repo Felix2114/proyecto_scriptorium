@@ -28,17 +28,16 @@
 
 .form-libro {
   display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 20px;
+  width: 100%;
 }
 
 .columna {
   display: flex;
   flex-direction: column;
-  flex: 1;
   gap: 15px;
-  min-width: 260px;
+  width: 100%;
 }
 
 .mat-form-field {

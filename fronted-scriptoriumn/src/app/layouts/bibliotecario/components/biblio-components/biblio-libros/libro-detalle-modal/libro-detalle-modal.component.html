@@ -6,12 +6,12 @@
   </button>
 </div>
 
-<div class="modal-body">
-  <h3>{{ data.titulo }}</h3>
-  <p>{{ data.autor }}</p>
-  <p><strong>Categoría:</strong> {{ data.generoId || 'Sin categoría' }}</p>
+<div class="modal-body" data-cy="libro-detalle">
+  <h3 data-cy="detalle-titulo">{{ data.titulo }}</h3>
+  <p data-cy="detalle-autor">{{ data.autor }}</p>
+  <p><strong>Categoría:</strong> <span data-cy="detalle-genero">{{ data.generoId || 'Sin categoría' }}</span></p>
 
-  <button mat-flat-button class="btn-prestamo" color="primary" (click)="abrirAgregarPrestamo()">
+  <button mat-flat-button class="btn-prestamo" color="primary" (click)="abrirAgregarPrestamo()" data-cy="btn-generar-prestamo">
     Generar Préstamo
   </button>
 </div>

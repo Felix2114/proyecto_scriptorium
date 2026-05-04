@@ -24,23 +24,45 @@ export class MiembroAgregarModalComponent {
       private miembrosService: MiembrosService,
     ) {}
 
-     cerrar(): void {
+  cerrar(): void {
     this.dialogRef.close();
   }
 
   guardarUsuario(miembro: any): void {
-       
-      this.miembrosService.guardarUsuario(miembro).subscribe(
-        () => {
-          console.log(MENSAJES.USUARIO_GUARDADO);
-          alert(MENSAJES.USUARIO_GUARDADO);
-        },
-        (error) => {
-          console.error(MENSAJES.ERROR_GUARDAR_USUARIO, error);
-          alert(MENSAJES.ERROR_GUARDAR_USUARIO);
-        }
-      );
+    // Validación de campos requeridos y espacios en blanco
+    const nombreTrimmed = miembro?.nombre?.trim() || '';
+    const direccionTrimmed = miembro?.direccion?.trim() || '';
+    const contactoTrimmed = miembro?.contacto?.trim() || '';
+    const fechaNacimiento = miembro?.fechaNacimiento?.trim() || '';
+
+    if (!nombreTrimmed || !fechaNacimiento || !direccionTrimmed || !contactoTrimmed) {
+      alert('Por favor completa todos los campos requeridos');
+      return;
     }
 
+    // Validación de longitud máxima del nombre
+    if (nombreTrimmed.length > 50) {
+      alert('El nombre no puede exceder 50 caracteres');
+      return;
+    }
 
+    const nuevoMiembro = {
+      nombre: nombreTrimmed,
+      fechaNacimiento: fechaNacimiento,
+      direccion: direccionTrimmed,
+      contacto: contactoTrimmed
+    };
+
+    this.miembrosService.guardarUsuario(nuevoMiembro).subscribe(
+      () => {
+        console.log(MENSAJES.USUARIO_GUARDADO);
+        alert(MENSAJES.USUARIO_GUARDADO);
+        this.cerrar();
+      },
+      (error) => {
+        console.error(MENSAJES.ERROR_GUARDAR_USUARIO, error);
+        alert(MENSAJES.ERROR_GUARDAR_USUARIO);
+      }
+    );
+  }
 }

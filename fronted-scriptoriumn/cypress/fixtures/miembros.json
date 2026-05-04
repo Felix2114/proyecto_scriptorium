@@ -1,0 +1,12 @@
+{
+  "valido": {
+    "nombre": "Laura Medina",
+    "direccion": "Av. Constitucion 210, Queretaro",
+    "fechaNacimiento": "2000-05-15",
+    "contacto": "4421234567"
+  },
+  "limites": {
+    "nombre": "Nombre De Cincuenta Caracteres Justo Para Probar XX",
+    "contacto": "44212345678901234567"
+  }
+}

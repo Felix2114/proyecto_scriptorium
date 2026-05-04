@@ -8,6 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MiembroAgregarModalComponent } from './miembro-agregar-modal/miembro-agregar-modal.component';
@@ -23,7 +24,8 @@ import { MiembroAgregarModalComponent } from './miembro-agregar-modal/miembro-ag
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDialogModule
   ]
 })
 export class BiblioMiembrosComponent {
