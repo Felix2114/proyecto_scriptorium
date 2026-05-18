@@ -23,7 +23,7 @@ public class Multa {
     private Prestamo prestamo;
 
     @ManyToOne
-    @JoinColumn(name = "tipoMulta_id", nullable = false)
+    @JoinColumn(name = "tipo_multa_id", nullable = false)
     private TipoMulta tipoMulta;
 
     public long getIdMulta() {

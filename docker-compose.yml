@@ -1,0 +1,29 @@
+services:
+  postgres:
+    build:
+      context: ./docker
+      dockerfile: Dockerfile
+    container_name: scriptorium-postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 12345678
+      POSTGRES_DB: scriptorium
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d scriptorium"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    networks:
+      - scriptorium-network
+
+networks:
+  scriptorium-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+    driver: local

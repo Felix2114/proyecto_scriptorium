@@ -1,0 +1,22 @@
+{
+  "valida": {
+    "idMulta": 1,
+    "idPrestamo": 2,
+    "monto": 50.00,
+    "fechaGenerada": "2026-05-01",
+    "estado": "pendiente"
+  },
+  "pagada": {
+    "idMulta": 2,
+    "idPrestamo": 3,
+    "monto": 25.00,
+    "fechaGenerada": "2026-04-15",
+    "fechaPagada": "2026-05-01",
+    "estado": "pagada"
+  },
+  "montos": {
+    "diaria": 5.00,
+    "minima": 10.00,
+    "maxima": 100.00
+  }
+}
