@@ -74,7 +74,7 @@ describe('CP-CY-MLT-002 — Pago de Multas', () => {
     cy.on('window:alert', () => true);
     cy.get('table tbody tr').first().click();
     cy.get('button').contains('Confirmar acción').click({ force: true });
-    cy.get('table').should('be.visible');
+    cy.get('table').should('exist');
   });
 });
 

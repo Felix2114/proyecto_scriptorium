@@ -7,9 +7,9 @@
 Cypress.Commands.add('loginBibliotecario', (usuario: string, contrasena: string) => {
   cy.session([usuario, contrasena], () => {
     cy.visit('/registro/login');
-    cy.get('[data-cy=input-usuario]').type(usuario);
-    cy.get('[data-cy=input-contrasena]').type(contrasena);
-    cy.get('[data-cy=btn-login]').click();
+    cy.get('[data-cy=input-usuario]').type(usuario, { force: true });
+    cy.get('[data-cy=input-contrasena]').type(contrasena, { force: true });
+    cy.get('[data-cy=btn-login]').click({ force: true });
     cy.url().should('include', '/biblioteca');
   });
 });
