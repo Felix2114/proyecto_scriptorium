@@ -77,11 +77,11 @@ public class MultaService {
         }
 
         public boolean eliminar(Long id) {
-                if (prestamoRepo.existsById(id)) {
-                        prestamoRepo.deleteById(id);
-                        return true;
-                }
-                return false;
+                        if (multaRepo.existsById(id)) {
+                                multaRepo.deleteById(id);
+                                return true;
+                        }
+                        return false;
         }
 
         public Optional<MultaResponseDTO> actualizar(Long id, MultaRequestDTO dto) {

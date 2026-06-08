@@ -28,14 +28,10 @@ public class UsuarioService {
     }
 
     public List<UsuarioResponseDTO> buscarUsuarios(String palabra) {
-        List<Object[]> resultados = repo.buscarUsuarios(palabra);
-
-        return resultados.stream().map(obj -> new UsuarioResponseDTO(
-                ((Number) obj[0]).longValue(),
-                (String) obj[1],
-                ((java.sql.Date) obj[2]).toLocalDate(), // pasar a localdate
-                (String) obj[3],
-                (String) obj[4])).collect(Collectors.toList());
+        return repo.buscarUsuarios(palabra).stream()
+            .map(usuario -> new UsuarioResponseDTO(usuario.getIdUsuario(), usuario.getNombre(),
+                usuario.getFechaNacimiento(), usuario.getDireccion(), usuario.getContacto()))
+            .collect(Collectors.toList());
     }
 
     public UsuarioResponseDTO guardar(UsuarioRequestDTO dto) {

@@ -1,0 +1,14 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
+1779590788544,37,POST login bibliotecario,200,,Smoke Users 1-1,text,true,,289,262,1,1,http://localhost:8080/bibliotecarios/login,34,0,20
+1779590788581,11,GET /libro,200,,Smoke Users 1-1,text,true,,1229,182,1,1,http://localhost:8080/libro,10,0,0
+1779590788593,5,GET /libro/buscar-libros,200,,Smoke Users 1-1,text,true,,1117,206,1,1,http://localhost:8080/libro/buscar-libros?palabra=a,5,0,0
+1779590788599,7,GET /Usuarios,200,,Smoke Users 1-1,text,true,,1036,185,1,1,http://localhost:8080/Usuarios,7,0,0
+1779590788606,5,GET /Usuarios/buscar-usuarios,200,,Smoke Users 1-1,text,true,,1030,211,1,1,http://localhost:8080/Usuarios/buscar-usuarios?palabra=a,5,0,0
+1779590788612,8,GET /Prestamo,200,,Smoke Users 1-1,text,true,,1977,185,1,1,http://localhost:8080/Prestamo,8,0,0
+1779590788621,6,GET /Prestamo/buscar_prestamo,200,,Smoke Users 1-1,text,true,,1971,211,1,1,http://localhost:8080/Prestamo/buscar_prestamo?palabra=a,6,0,0
+1779590788628,4,GET /bibliotecarios,200,,Smoke Users 1-1,text,true,,813,205,1,1,http://localhost:8080/bibliotecarios?page=0&size=5,4,0,0
+1779590788633,3,GET /Genero,200,,Smoke Users 1-1,text,true,,539,183,1,1,http://localhost:8080/Genero,3,0,0
+1779590788637,6,GET /TipoMulta,200,,Smoke Users 1-1,text,true,,525,186,1,1,http://localhost:8080/TipoMulta,6,0,0
+1779590788644,3,GET /Registro,200,,Smoke Users 1-1,text,true,,369,185,1,1,http://localhost:8080/Registro,3,0,0
+1779590788647,5,GET /inventario,200,,Smoke Users 1-1,text,true,,659,187,1,1,http://localhost:8080/inventario,5,0,0
+1779590788652,9,GET /Multa,200,,Smoke Users 1-1,text,true,,878,182,1,1,http://localhost:8080/Multa,9,0,0

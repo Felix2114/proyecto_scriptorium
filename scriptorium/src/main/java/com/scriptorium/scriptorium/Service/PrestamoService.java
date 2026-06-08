@@ -324,12 +324,12 @@ public class PrestamoService {
         }
 
         public Optional<BigDecimal> obtenerMontoMulta(int idPrestamo) {
-                String sql = "SELECT obtener_monto_multa(?)";
-
                 try {
-                        BigDecimal monto = jdbcTemplate.queryForObject(sql, BigDecimal.class, idPrestamo);
-                        return Optional.ofNullable(monto);
-                } catch (EmptyResultDataAccessException e) {
+                        return multaService.listar().stream()
+                                        .filter(m -> m.getPrestamoId() == idPrestamo)
+                                        .map(m -> BigDecimal.valueOf(m.getMonto()))
+                                        .reduce((first, second) -> second);
+                } catch (Exception e) {
                         return Optional.empty();
                 }
         }
